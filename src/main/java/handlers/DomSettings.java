@@ -1,4 +1,4 @@
-package main;
+package handlers;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;

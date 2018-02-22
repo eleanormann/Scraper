@@ -1,15 +1,14 @@
-package main;
+package handlers;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
-import com.gargoylesoftware.htmlunit.WebWindow;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.google.common.collect.ImmutableMap;
+import handlers.DomSettings;
+import handlers.ResultsExtractor;
 import org.junit.Test;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class ResultsExtractorTest {
 
@@ -27,6 +26,14 @@ public class ResultsExtractorTest {
         assertEquals("div", dom.getEditorRating().get("elementName"));
         assertEquals("class", dom.getEditorRating().get("attributeName"));
         assertEquals("col-xs-6 col-ms-4 col-sm-4 col-lg-3", dom.getEditorRating().get("attributeValue"));
+    }
+
+    @Test
+    public void testExtractReviewReturnsUrlWithDashSeparatedTitle(){
+
+        assertEquals("www.test.com/title-is-dash-separated-with-suffix/",
+                new ResultsExtractor().extractReview("Title is Dash Separated",
+                        ImmutableMap.of("prefix", "www.test.com/", "suffix", "-with-suffix/")));
     }
 
 }
