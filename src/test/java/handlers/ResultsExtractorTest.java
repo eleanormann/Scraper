@@ -1,14 +1,11 @@
 package handlers;
 
 import com.google.common.collect.ImmutableMap;
-import handlers.DomSettings;
-import handlers.ResultsExtractor;
 import org.junit.Test;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class ResultsExtractorTest {
 

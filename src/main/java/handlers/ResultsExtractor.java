@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import handlers.DomSettings;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,13 +34,13 @@ public class ResultsExtractor {
 
     private String formatText(HtmlElement element, DomSettings settings) {
         final String title = extractTextFromElement(element, settings.getTitle());
-        return title + "\n" + extractTextFromElement(element, settings.getEditorRating())
-                + "\n" + extractReview(title, settings.getReviewUrlDetails());
+        return title + "," + extractTextFromElement(element, settings.getEditorRating())
+                + "," + extractReview(title, settings.getReviewUrlDetails());
     }
 
     private String extractTextFromElement(HtmlElement element, Map<String, String> elementDetails) {
         return element.getOneHtmlElementByAttribute(elementDetails.get(ELEMENT_NAME), elementDetails.get(ATTRIBUTE_NAME),
-                elementDetails.get(ATTRIBUTE_VALUE)).asText();
+                elementDetails.get(ATTRIBUTE_VALUE)).asText().replace("\n", " ");
     }
 
     //TODO still too customised to specific site
