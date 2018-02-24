@@ -24,5 +24,5 @@ on a different review site.
 I just ran it directly from the ide. Edit the 
 ``dom-attributes.json`` file in the test resources
 directory then run ``ScrapingRunner``. It writes 
-to ``reviews-summary.csv`` and can you opened in 
+to ``reviews-summary.csv`` and can be opened in 
 your favourite spreadsheet.
